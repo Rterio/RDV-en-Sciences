@@ -1,0 +1,189 @@
+/* Pages « Édition AAAA » : chaque édition reprend les couleurs de son logo.
+   Pour une nouvelle année, copiez un bloc .ed-AAAA et changez les couleurs. */
+
+.ed-2023 {
+  --e-bg: #3f51b5;      /* indigo */
+  --e-fill: #a7e237;    /* lime */
+  --e-c1: #cb3974;      /* atome */
+  --e-c2: #009688;      /* sigma / ADN */
+  --e-c3: #9c27b0;      /* bordure */
+  --e-tint: #eef8db;
+  --e-on-fill: #1f2a66;
+}
+.ed-2024 {
+  --e-bg: #165457;      /* sarcelle foncé */
+  --e-fill: #42bfa7;    /* sarcelle */
+  --e-c1: #f36c2a;      /* atome */
+  --e-c2: #d61f8c;      /* ADN */
+  --e-c3: #e0c03c;      /* sigma */
+  --e-tint: #dff3ee;
+  --e-on-fill: #0f3a3c;
+  --e-t1: #2a1206; --e-t3: #2b2306;
+}
+.ed-2025 {
+  --e-bg: #2c0e3b;      /* aubergine */
+  --e-fill: #fdbc66;    /* abricot */
+  --e-c1: #14b27d;      /* atome */
+  --e-c2: #f93269;      /* ADN */
+  --e-c3: #c33ae8;      /* sigma */
+  --e-line: #fa8900;
+  --e-tint: #fff0dc;
+  --e-on-fill: #2c0e3b;
+  --e-t1: #062d20; --e-t2: #2c0e3b;
+}
+.ed-2026 {
+  --e-bg: #07053b;      /* marine */
+  --e-fill: #84bfff;    /* bleu ciel */
+  --e-c1: #ffca0d;      /* atome */
+  --e-c2: #c7013e;      /* ADN */
+  --e-c3: #fa8901;      /* sigma */
+  --e-line: #0d48ab;
+  --e-tint: #e3efff;
+  --e-on-fill: #07053b;
+  --e-t1: #07053b; --e-t3: #07053b;
+  /* Police de l'identité 2026 : Chunk Five (Ultra en remplacement). */
+  --e-font: "ChunkFive", "Chunk Five", "Ultra", Georgia, serif;
+}
+
+.edition { --e-font-default: var(--display); }
+.edition main h1, .edition main h2, .ed-stat .n { font-family: var(--e-font, var(--display)); }
+
+/* ---------- Héros de l'édition ---------- */
+
+.ed-hero { background: var(--e-bg); color: #fff; position: relative; overflow: hidden; }
+/* Motif d'hexagones (couleur de remplissage du logo) sur la moitié droite. */
+.ed-hero::before {
+  content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 55%; pointer-events: none;
+  background: var(--e-fill); opacity: 0.14;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='72.75' viewBox='0 0 84 72.75'%3E%3Cpath d='M21 1.5h42l19.5 34.875L63 71.25H21L1.5 36.375z' fill='none' stroke='black' stroke-width='3'/%3E%3C/svg%3E") 0 0 / 84px 72.75px repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='72.75' viewBox='0 0 84 72.75'%3E%3Cpath d='M21 1.5h42l19.5 34.875L63 71.25H21L1.5 36.375z' fill='none' stroke='black' stroke-width='3'/%3E%3C/svg%3E") 0 0 / 84px 72.75px repeat;
+}
+.ed-hero .wrap {
+  position: relative; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 2rem; align-items: center;
+  padding-top: clamp(2.5rem, 6vw, 4.5rem); padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+.ed-ordinal {
+  display: inline-block; font-weight: 700; color: var(--e-on-fill); background: var(--e-fill);
+  padding: 0.25rem 0.75rem; border-radius: 999px; margin-bottom: 1rem;
+}
+.ed-hero h1 {
+  font-size: clamp(2.75rem, 7.5vw, 5.25rem); line-height: 0.95; margin-bottom: 0.35em;
+  text-shadow: 0.05em 0.05em 0 var(--e-line, var(--e-c3));
+}
+.ed-hero .lead { color: rgba(255,255,255,0.86); max-width: 44ch; }
+.ed-logo img { width: 100%; max-width: 21rem; margin-left: auto; filter: drop-shadow(0 0.75rem 1.5rem rgba(0,0,0,0.25)); }
+
+/* Sélecteur d'éditions, recoloré pour l'édition */
+.edition .edition-nav-label { color: rgba(255,255,255,0.8); }
+.edition .edition-nav a { border-color: var(--e-fill); background: rgba(255,255,255,0.06); color: #fff; }
+.edition .edition-nav a:hover { background: var(--e-fill); color: var(--e-on-fill); }
+.edition .edition-nav a[aria-current="page"] { background: #fff; border-color: #fff; color: var(--e-bg); }
+
+@media (max-width: 760px) {
+  .ed-hero .wrap { grid-template-columns: 1fr; }
+  .ed-logo { order: -1; }
+  .ed-logo img { max-width: 9rem; margin: 0; }
+}
+
+/* ---------- Ruche de chiffres ---------- */
+
+.ed-stats { padding: clamp(3rem, 7vw, 5rem) 0 clamp(2rem, 4vw, 3rem); }
+.honeycomb { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 0.75rem; }
+.ed-stat {
+  --w: clamp(9.5rem, 17vw, 12.5rem);
+  width: var(--w); aspect-ratio: 1 / 0.866;
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  padding: 0 1.4rem; background: var(--e-bg); color: #fff;
+}
+/* Disposition en ruche : une case sur deux est décalée vers le bas. */
+@media (min-width: 761px) { .ed-stat:nth-child(even) { transform: translateY(50%); } .honeycomb { padding-bottom: calc(clamp(9.5rem, 17vw, 12.5rem) * 0.433); } }
+.ed-stat:nth-child(5n+1) { background: var(--e-bg); }
+.ed-stat:nth-child(5n+2) { background: var(--e-fill); color: var(--e-on-fill); }
+.ed-stat:nth-child(5n+3) { background: var(--e-c1); color: var(--e-t1, #fff); }
+.ed-stat:nth-child(5n+4) { background: var(--e-c2); color: var(--e-t2, #fff); }
+.ed-stat:nth-child(5n+5) { background: var(--e-c3); color: var(--e-t3, #fff); }
+.ed-stat .q { font-size: 0.8rem; font-weight: 600; opacity: 0.9; line-height: 1.2; }
+.ed-stat .n { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1; margin: 0.1rem 0 0.2rem; }
+.ed-stat .l { font-size: 0.85rem; font-weight: 600; line-height: 1.25; max-width: 12ch; }
+@media (max-width: 760px) { .ed-stat { --w: calc(50% - 0.5rem); } }
+
+/* ---------- Sujets abordés ---------- */
+
+.ed-topics { padding: clamp(2.5rem, 6vw, 4rem) 0; }
+.ed-topics h2, .ed-photos h2 { color: var(--e-bg); }
+.topic-list { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0.75rem; }
+.topic-list li {
+  display: flex; align-items: center; gap: 0.9rem; padding: 1rem 1.1rem;
+  background: #fff; border: 1px solid var(--frost); border-radius: var(--radius);
+  font-weight: 600; font-size: 1.05rem; line-height: 1.35;
+}
+.topic-list li::before {
+  content: ""; flex: none; width: 1.6rem; aspect-ratio: 1 / 0.866;
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  background: var(--e-c1);
+}
+.topic-list li:nth-child(3n+2)::before { background: var(--e-c2); }
+.topic-list li:nth-child(3n+3)::before { background: var(--e-c3); }
+
+/* ---------- Mosaïque de photos ---------- */
+
+.ed-photos { padding: 0 0 clamp(3rem, 7vw, 5rem); }
+.mosaic { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: clamp(8rem, 14vw, 12rem); gap: 0.6rem; margin-top: 1.5rem; }
+.mosaic > * { width: 100%; height: 100%; border-radius: var(--radius); }
+.mosaic img { object-fit: cover; background: var(--e-tint); }
+.mosaic > :first-child { grid-column: span 2; grid-row: span 2; }
+.mosaic > * { min-width: 0; }
+/* 6 photos : [1 1 2 3] [1 1 4 4] [5 5 6 6] — 8 photos : [1 1 2 3] [1 1 4 5] [6 6 7 8] */
+.mosaic-6 > :nth-child(4), .mosaic-6 > :nth-child(5), .mosaic-6 > :nth-child(6) { grid-column: span 2; }
+.mosaic-8 > :nth-child(6) { grid-column: span 2; }
+.mosaic .img-placeholder {
+  aspect-ratio: auto; background: var(--e-tint); color: var(--e-bg);
+  background-image: none; border: 2px dashed color-mix(in srgb, var(--e-bg) 25%, transparent);
+}
+.mosaic .img-placeholder .ph-text { background: none; }
+@media (max-width: 760px) {
+  .mosaic { grid-template-columns: 1fr 1fr; grid-auto-rows: 9rem; }
+  .mosaic > * { grid-column: span 1 !important; }
+  .mosaic > :first-child, .mosaic > :last-child:nth-child(even) { grid-column: span 2 !important; }
+}
+
+/* ---------- Édition précédente / suivante ---------- */
+
+.ed-pager { padding: 0 0 clamp(3rem, 7vw, 5rem); }
+.ed-pager .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.ed-pager a {
+  display: flex; align-items: center; gap: 1.25rem; text-decoration: none;
+  background: var(--e-bg); color: #fff; border-radius: var(--radius); padding: 1.25rem 1.5rem;
+  border: 3px solid transparent; transition: border-color 0.15s;
+}
+.ed-pager a:hover { border-color: var(--e-fill); }
+.ed-pager a.next { grid-column: 2; flex-direction: row-reverse; text-align: right; }
+.ed-pager img { width: 4.5rem; flex: none; }
+.ed-pager .dir { display: block; font-size: 0.9rem; opacity: 0.85; }
+.ed-pager .yr { display: block; font-family: var(--e-font, var(--display)); font-size: 1.75rem; line-height: 1.1; }
+.ed-pager .go { display: block; margin-top: 0.25rem; font-weight: 700; color: var(--e-fill); text-decoration: underline; text-underline-offset: 0.2em; }
+@media (max-width: 600px) {
+  .ed-pager .wrap { grid-template-columns: 1fr; }
+  .ed-pager a.next { grid-column: 1; }
+}
+
+/* ---------- Bilan à venir (2026) ---------- */
+
+.ed-soon { padding: clamp(3rem, 7vw, 5rem) 0; }
+.ed-soon .card {
+  background: var(--e-tint); border-left: 6px solid var(--e-c1); border-radius: var(--radius);
+  padding: clamp(1.5rem, 4vw, 2.5rem); max-width: 46rem;
+}
+.ed-soon h2 { color: var(--e-bg); }
+.ed-soon p { margin-bottom: 0; }
+
+/* ---------- Cartes d'année colorées (accueil et liste des éditions) ---------- */
+
+.tl-card[class*="ed-"] { border-top: 6px solid var(--e-bg); }
+.tl-card[class*="ed-"]:hover { border-color: var(--e-bg); }
+.tl-card .tl-logo { width: 3rem; float: right; margin: 0.15rem 0 0 0.5rem; }
+.timeline li:nth-child(1)::before { border-color: #3f51b5; }
+.timeline li:nth-child(2)::before { border-color: #165457; }
+.timeline li:nth-child(3)::before { border-color: #2c0e3b; }
+.timeline li:nth-child(4)::before { border-color: #07053b; }

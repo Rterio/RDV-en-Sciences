@@ -29,7 +29,13 @@ Plain HTML, CSS and JavaScript. No build step, ready for GitHub Pages.
 | Activities, partners, team | `activites/`, `partenaires/`, `organisation/` |
 | Past editions | `editions/<year>/index.html` |
 
-To add a new edition, copy `editions/2025/` to a new year folder, update the text and photos, and add the year to the edition buttons and the timeline on `index.html` and `editions/index.html`.
+Each edition page uses that year's logo colors, defined in `assets/editions.css` (one `.ed-AAAA` block per year), with the logo in `images/editions/logo-AAAA.png`.
+
+To add a new edition (e.g. 2027 once it's over):
+1. Copy `editions/2025/` to `editions/2027/` and update the text, numbers, topics and photo names.
+2. In `assets/editions.css`, copy a `.ed-AAAA` block, rename it `.ed-2027` and set the colors.
+3. Change `ed-2025` to `ed-2027` on the page's `<body>`, save the logo as `images/editions/logo-2027.png`.
+4. Add the year to the edition buttons, the previous/next links and the timelines on `index.html` and `editions/index.html`.
 
 ## Old URLs
 

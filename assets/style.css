@@ -331,3 +331,4 @@ p { margin: 0 0 1em; max-width: 65ch; }
 .section + .section-alt { padding-top: clamp(3rem, 7vw, 5.5rem); }
 .tl-card .detail { display: block; }
 .tl-card .more { display: block; width: fit-content; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
