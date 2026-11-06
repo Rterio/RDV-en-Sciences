@@ -253,3 +253,51 @@
 .session-who { margin: auto 0 0; color: var(--slate); font-size: 0.95rem; line-height: 1.45; }
 .session-who strong { color: var(--ink); }
 .ed-program + .ed-soon { padding-top: 0; }
+
+/* Types d'activités colorés selon la palette de l'année (2025 : conférences violet, ateliers vert, tables rondes et panels orange) */
+.session.c-k1 { --s: var(--e-c3); }
+.session.c-k2 { --s: var(--e-c1); --s-text: var(--e-t1, #fff); }
+.session.c-k3 { --s: var(--e-line, var(--e-c2)); --s-text: var(--e-bg); }
+.session.c-purple { --s: #c77dd3; --s-text: #07053b; }
+.session:not(:has(.session-who)) h3 { margin-bottom: 0; }
+
+/* ---------- Aussi au programme ---------- */
+
+.ed-extras { padding: 0 0 clamp(3rem, 6vw, 4.5rem); }
+.ed-extras h2 { color: var(--e-bg); font-size: clamp(1.4rem, 3vw, 1.8rem); }
+.extras { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.extras li {
+  font-weight: 600; padding: 0.55rem 1rem; border-radius: 999px;
+  background: var(--e-bg); color: #fff; border: 2px solid var(--e-fill);
+}
+.ed-program + .ed-extras { margin-top: -1rem; }
+
+/* 2024 : rose sur sarcelle, texte blanc pour le contraste */
+.ed-2024 .session.c-k3 { --s-text: #fff; }
+.ed-2023 .session.c-k3 { --s-text: #fff; }
+
+/* ---------- Partenaires de l'édition ---------- */
+
+.ed-partners { padding: clamp(2.5rem, 6vw, 4rem) 0; background: #fff; border-top: 1px solid var(--frost); border-bottom: 1px solid var(--frost); margin-bottom: clamp(3rem, 6vw, 4.5rem); }
+.ed-partners h2 { color: var(--e-bg); margin-bottom: 1.5rem; }
+.p-tier { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; align-items: start; padding: 1.1rem 0; border-top: 1px solid var(--frost); }
+.p-tier:first-of-type { border-top: 0; }
+.p-tier h3 { margin: 0.55rem 0 0; font-size: 1.05rem; font-weight: 700; color: var(--e-bg); display: flex; align-items: center; gap: 0.5rem; }
+.p-tier h3::before { content: ""; flex: none; width: 1rem; aspect-ratio: 1 / 0.866; clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%); background: var(--sage); }
+.p-platine h3::before { background: linear-gradient(135deg, #eef1f4, #8d9aa8); }
+.p-diamant h3::before { background: linear-gradient(135deg, #e6fbff, #6cc6e0); }
+.p-beryl h3::before { background: linear-gradient(135deg, #d9f7ec, #3fb58f); }
+.p-or h3::before { background: #d9a93f; }
+.p-argent h3::before { background: #b9c2cb; }
+.p-bronze h3::before { background: #b07a4f; }
+.p-autres h3::before { background: var(--e-fill); }
+.p-cards { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.p-card {
+  display: flex; align-items: center; gap: 0.75rem; min-height: 3rem;
+  padding: 0.55rem 1rem; border: 1px solid var(--frost); border-radius: var(--radius);
+  background: var(--paper); text-decoration: none; color: var(--ink); font-weight: 600; font-size: 0.975rem; line-height: 1.3;
+}
+a.p-card:hover { border-color: var(--e-bg); }
+.p-card img { height: 2.25rem; width: auto; max-width: 7rem; object-fit: contain; }
+.ed-partners + .ed-pager { padding-top: 0; }
+@media (max-width: 600px) { .p-tier { grid-template-columns: 1fr; gap: 0.5rem; } .p-tier h3 { margin: 0; } }

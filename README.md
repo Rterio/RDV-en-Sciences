@@ -9,7 +9,8 @@ Plain HTML, CSS and JavaScript. No build step, ready for GitHub Pages.
    python3 scripts/telecharger-images.py
    ```
 2. **Add the partner logos** (they couldn't be extracted automatically). Save them as PNG in `images/partenaires/`:
-   `aesgul.png`, `fsg.png`, `arcelormittal.png`, `crchudequebec.png`, `ulaval.png`, `cadeul.png`, `ibis.png`.
+   `aesgul.png`, `fsg.png`, `arcelormittal.png`, `crchudequebec.png`, `ulaval.png`, `cadeul.png`, `ibis.png`,
+   plus, for past editions, `mtmd.png` (Transports et Mobilité durable), `inrs.png`, `h2lab.png`, `acs.png`, `bve.png`, `proteo.png`.
    Until a logo is present, the partner card simply shows the name.
 3. **Add the Roca One font** (the 2027 identity typeface, a commercial font): if your team has the licence, save it as `assets/fonts/roca-one.woff2`. Until then, headings use Young Serif, a free look-alike.
 4. **Preview locally** (links need a small server, opening the file directly won't navigate correctly):
