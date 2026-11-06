@@ -332,3 +332,23 @@ p { margin: 0 0 1em; max-width: 65ch; }
 .tl-card .detail { display: block; }
 .tl-card .more { display: block; width: fit-content; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Page Partenaires (en attente des partenaires de l'année) ---------- */
+.partners-soon, .partners-cta { border-radius: var(--radius); padding: clamp(1.5rem, 4vw, 2.25rem); }
+.partners-soon { background: #fff; border: 1px dashed var(--sage); }
+.partners-soon h2, .partners-cta h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); }
+.partners-cta { background: var(--ink); color: var(--paper); }
+.partners-cta p { color: var(--on-dark); }
+.partners-cta .btn { background: var(--sage); border-color: var(--sage); color: var(--ink) !important; }
+.partners-cta .btn:hover { background: var(--paper); border-color: var(--paper); }
+.past-partners { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr)); gap: 0.75rem; }
+.past-partners a {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 1rem; align-items: center;
+  padding: 1rem 1.25rem; border-radius: var(--radius); text-decoration: none; background: var(--e-bg); color: #fff;
+  border: 3px solid transparent; transition: border-color 0.15s;
+}
+.past-partners a:hover { border-color: var(--e-fill); }
+.past-partners img { grid-row: span 2; width: 3.5rem; }
+.past-partners .yr { font-family: var(--display); font-size: 1.6rem; line-height: 1.1; }
+.past-partners .go { font-weight: 700; color: var(--e-fill); text-decoration: underline; text-underline-offset: 0.2em; }
+.past-partners .go { white-space: nowrap; font-size: 0.95rem; }
