@@ -352,3 +352,6 @@ p { margin: 0 0 1em; max-width: 65ch; }
 .past-partners .yr { font-family: var(--display); font-size: 1.6rem; line-height: 1.1; }
 .past-partners .go { font-weight: 700; color: var(--e-fill); text-decoration: underline; text-underline-offset: 0.2em; }
 .past-partners .go { white-space: nowrap; font-size: 0.95rem; }
+.partners-cta-wide { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 1.5rem 2.5rem; align-items: center; }
+.partners-cta-wide p:last-child { margin: 0; }
+@media (max-width: 760px) { .partners-cta-wide { grid-template-columns: 1fr; } }
