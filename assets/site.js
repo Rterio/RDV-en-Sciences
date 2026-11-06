@@ -93,3 +93,37 @@ const ROOT_URL = new URL("../", document.currentScript.src);
     });
   }
 })();
+
+/* Images manquantes : une image avec data-placeholder (ou data-initials) qui ne se
+   charge pas est remplacée par un encadré au même format, avec un texte lisible.
+   Dès que le vrai fichier est ajouté dans images/, la photo s'affiche normalement. */
+(function () {
+  function toPlaceholder(img) {
+    if (img.dataset.placeheld) return;
+    img.dataset.placeheld = "1";
+    const box = document.createElement("div");
+    box.className = "img-placeholder" + (img.dataset.initials ? " is-person" : "");
+    box.setAttribute("role", "img");
+    box.setAttribute("aria-label", img.alt || img.dataset.placeholder || "Image à venir");
+    const inner = img.dataset.initials
+      ? `<span class="ph-initials">${img.dataset.initials}</span><span class="ph-text">${img.dataset.placeholder || ""}</span>`
+      : `<span class="ph-text">${img.dataset.placeholder || "Image à venir"}</span>`;
+    box.innerHTML = inner;
+    img.replaceWith(box);
+  }
+
+  const selector = "img[data-placeholder], img[data-initials]";
+  // Images déjà en échec avant le chargement de ce script.
+  document.querySelectorAll(selector).forEach((img) => {
+    if (img.complete && img.naturalWidth === 0) toPlaceholder(img);
+  });
+  // Images qui échouent plus tard (chargement différé).
+  document.addEventListener(
+    "error",
+    (e) => {
+      const t = e.target;
+      if (t instanceof HTMLImageElement && t.matches(selector)) toPlaceholder(t);
+    },
+    true
+  );
+})();
