@@ -187,3 +187,31 @@
 .timeline li:nth-child(2)::before { border-color: #165457; }
 .timeline li:nth-child(3)::before { border-color: #2c0e3b; }
 .timeline li:nth-child(4)::before { border-color: #07053b; }
+
+/* ---------- Illustrations thématiques ---------- */
+
+/* Illustration du thème derrière le logo (2023 : disciplines, 2024 : IA, 2025 : espace et Nord). */
+.ed-art { position: absolute; top: 0; right: 0; height: 100%; width: 70%; pointer-events: none; }
+.ed-hero.has-art::before { display: none; }
+/* Fondu vers la gauche pour garder le texte lisible. */
+.ed-hero.has-art::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, var(--e-bg) 28%, color-mix(in srgb, var(--e-bg) 55%, transparent) 55%, transparent 80%);
+}
+.ed-hero .wrap { z-index: 1; }
+@media (max-width: 760px) {
+  .ed-art { width: 100%; opacity: 0.55; }
+  .ed-hero.has-art::after { background: linear-gradient(to bottom, transparent 0, color-mix(in srgb, var(--e-bg) 70%, transparent) 30%, var(--e-bg) 60%); }
+}
+
+/* Icône de chaque sujet, dans une tuile hexagonale. */
+.topic-list li::before { content: none; }
+.topic-list li { gap: 1rem; }
+.topic-icon {
+  flex: none; width: 3rem; aspect-ratio: 1 / 0.866; display: grid; place-items: center;
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  background: var(--e-c1); color: var(--e-t1, #fff);
+}
+.topic-icon svg { width: 1.45rem; height: 1.45rem; }
+.topic-list li:nth-child(3n+2) .topic-icon { background: var(--e-c2); color: var(--e-t2, #fff); }
+.topic-list li:nth-child(3n+3) .topic-icon { background: var(--e-c3); color: var(--e-t3, #fff); }
