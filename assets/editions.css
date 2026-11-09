@@ -301,3 +301,42 @@ a.p-card:hover { border-color: var(--e-bg); }
 .p-card img { height: 2.25rem; width: auto; max-width: 7rem; object-fit: contain; }
 .ed-partners + .ed-pager { padding-top: 0; }
 @media (max-width: 600px) { .p-tier { grid-template-columns: 1fr; gap: 0.5rem; } .p-tier h3 { margin: 0; } }
+
+/* ---------- Page Éditions passées : chiffres cumulés ---------- */
+
+.totals { padding: clamp(2rem, 5vw, 3rem) 0 0; }
+.totals-list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid var(--frost); border-bottom: 1px solid var(--frost);
+}
+.totals-list li { padding: 1.5rem 1rem 1.5rem 0; }
+.totals-list li + li { padding-left: 1.25rem; border-left: 1px solid var(--frost); }
+.totals-list .n { display: block; font-family: var(--display); font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: 1; color: var(--green); }
+.totals-list .l { display: block; margin-top: 0.4rem; color: var(--slate); font-weight: 600; line-height: 1.3; }
+@media (max-width: 760px) {
+  .totals-list { grid-template-columns: 1fr 1fr; }
+  .totals-list li { padding: 1.1rem 0.75rem; border-left: 0 !important; border-top: 1px solid var(--frost); }
+  .totals-list li:first-child { grid-column: 1 / -1; border-top: 0; }
+}
+
+/* ---------- Page Éditions passées : sujets abordés ---------- */
+
+.topics-all { list-style: none; margin: 1.5rem 0 0; padding: 0; columns: 2 22rem; column-gap: 2.5rem; }
+.topics-all li {
+  break-inside: avoid; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 0.65rem 0; border-bottom: 1px solid var(--frost);
+}
+.topics-all .t { font-weight: 600; line-height: 1.35; }
+.topics-all .yrs { display: flex; gap: 0.3rem; flex: none; }
+/* Pastille d'année, aux couleurs de l'édition */
+.ychip {
+  font-size: 0.8rem; font-weight: 700; text-decoration: none; line-height: 1;
+  padding: 0.35rem 0.5rem; border-radius: 4px; background: var(--e-bg); color: #fff;
+  border: 2px solid var(--e-bg);
+}
+.ychip:hover { background: var(--e-fill); color: var(--e-on-fill); border-color: var(--e-bg); }
+
+.cta-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.partners-cta .btn-ghost { color: var(--paper) !important; border-color: var(--sage); background: transparent; }
+.partners-cta .btn-ghost:hover { background: rgba(255,255,255,0.08); }
