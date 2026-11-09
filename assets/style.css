@@ -355,3 +355,6 @@ p { margin: 0 0 1em; max-width: 65ch; }
 .partners-cta-wide { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 1.5rem 2.5rem; align-items: center; }
 .partners-cta-wide p:last-child { margin: 0; }
 @media (max-width: 760px) { .partners-cta-wide { grid-template-columns: 1fr; } }
+
+.people .study { display: block; color: var(--slate); font-size: 0.9rem; font-style: italic; }
+.people .role { display: block; }
