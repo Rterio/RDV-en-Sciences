@@ -416,3 +416,23 @@ a.p-card:hover { border-color: var(--e-bg); }
 }
 @media (prefers-reduced-motion: no-preference) { .gf-track { scroll-behavior: smooth; } }
 .gf-slide .img-placeholder { display: flex; }
+
+/* ---------- Carrousel : icônes des thèmes de l'année (remplacent les hexagones) ---------- */
+.gf-deco { display: none; }
+.gf-icons { position: absolute; top: -1.6rem; right: 1.5rem; z-index: 2; display: flex; gap: 0.5rem; pointer-events: none; }
+.gf-icon {
+  width: 3.1rem; height: 3.1rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--e-c1); color: var(--e-t1, #fff);
+  border: 4px solid var(--paper); box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.18);
+}
+.gf-icon:nth-child(2) { background: var(--e-c2); color: var(--e-t2, #fff); }
+.gf-icon:nth-child(3) { background: var(--e-c3); color: var(--e-t3, #fff); }
+.gf-icon svg { width: 1.45rem; height: 1.45rem; }
+@media (max-width: 600px) {
+  .gf-icons { top: -1.25rem; right: 1rem; gap: 0.35rem; }
+  .gf-icon { width: 2.5rem; height: 2.5rem; border-width: 3px; }
+  .gf-icon svg { width: 1.15rem; height: 1.15rem; }
+}
+
+/* Carrousel : motif d'hexagones sur tout le cadre */
+.gallery-frame::before { inset: 0; width: auto; height: auto; border-radius: 12px; opacity: 0.1; }
