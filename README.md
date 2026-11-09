@@ -1,7 +1,5 @@
 # Site du RDV en Sciences : guide de modification
 
-OUVRIR CE FICHIER DANS UN OUTIL EN LIGNE DE VISUALISATION DE MARKDOWN (https://markdownviewer.org)
-
 Ce guide explique comment modifier le site **rdv-en-sciences.aesgul.com**, même sans expérience en programmation. Il s'adresse aux prochains comités organisateurs et à toute IA (ChatGPT, Claude, Copilot…) qu'on utiliserait pour faire les modifications.
 
 **Le plus important à retenir :**
@@ -113,6 +111,7 @@ rdv-en-sciences/
 │   ├── site.js                Menu, pied de page, lien de billetterie, réseaux sociaux
 │   ├── style.css              Apparence générale et couleurs de l'année en cours
 │   ├── editions.css           Couleurs et mise en page des pages d'édition
+│   ├── carousel.js            Carrousel de photos des pages d'édition
 │   └── fonts/                 Polices installées localement (ex. roca-one.woff2)
 ├── images/
 │   ├── logo.png               Logo de l'en-tête et icône d'onglet
@@ -348,12 +347,24 @@ Chaque activité est une carte :
 Une activité par `<li>…</li>`.
 
 ### 7.6 Les photos et les partenaires
-**Photos** : bloc `<div class="mosaic mosaic-6">` (ou `mosaic-8`). Chaque photo :
+**Photos (carrousel)** : bloc `<section class="ed-photos">`. Chaque photo est une ligne `<figure class="gf-slide">` dans `<div class="gf-track">` :
 ```html
-<img src="../../images/editions/2027-01.jpg" alt="Photo de l’édition 2027" data-placeholder="Photo de l’édition 2027" loading="lazy" width="1280" height="853">
+<figure class="gf-slide"><img src="../../images/editions/2027-01.webp" data-thumb="../../images/editions/2027-01-mini.webp" alt="Cocktail de réseautage" data-placeholder="Photo de l’édition 2027" loading="lazy" width="1400" height="933"><figcaption>Cocktail de réseautage</figcaption></figure>
 ```
-- Nommez les photos `AAAA-01.jpg`, `AAAA-02.jpg`, etc., et déposez-les dans `images/editions/`.
-- La mise en page est prévue pour **6 photos** (`mosaic-6`) ou **8 photos** (`mosaic-8`). La première photo est affichée en grand : choisissez la meilleure.
+- **Ajouter une photo :** copiez une ligne `<figure>…</figure>`, changez le nom du fichier, le texte `alt` et la légende (`<figcaption>`). Les flèches, le compteur et les miniatures se mettent à jour tout seuls.
+- **Retirer une photo :** supprimez sa ligne `<figure>…</figure>`.
+- **Ordre :** l'ordre des lignes est l'ordre du carrousel. Mettez la plus belle photo en premier : c'est celle qu'on voit en arrivant. Entre 8 et 15 photos, c'est l'idéal.
+- La première photo n'a pas `loading="lazy"` (elle s'affiche tout de suite) ; les suivantes l'ont.
+- `data-thumb` (la miniature) est facultatif ; sans lui, la photo complète sert de miniature.
+- Le cadre, les flèches et les hexagones décoratifs prennent automatiquement les couleurs de l'année.
+
+**Préparer les photos (important pour l'espace disque) :** ne mettez jamais les fichiers originaux du photographe sur le site (souvent 5 à 10 Mo chacun). Convertissez-les au format **WebP** :
+- photo : 1400 × 933 px, qualité 70 à 75 → environ 80 à 150 Ko ;
+- miniature (`-mini.webp`) : 360 × 240 px, qualité 65 → environ 15 Ko.
+
+Le plus simple : https://squoosh.app (gratuit, dans le navigateur). Glissez la photo, choisissez *WebP*, cochez *Resize* (largeur 1400), puis téléchargez. Nommez les fichiers `AAAA-01.webp`, `AAAA-01-mini.webp`, etc., dans `images/editions/`. Une IA ou un petit script Python (bibliothèque Pillow) peut aussi convertir tout un dossier d'un coup.
+
+Gardez les originaux ailleurs (Google Drive de l'association, par exemple), pas dans le dépôt GitHub.
 
 **Partenaires de l'édition** : bloc `<section class="ed-partners" id="partenaires">`. Chaque niveau :
 ```html
@@ -436,11 +447,11 @@ Dans `assets/editions.css`, chaque année a son bloc `.ed-AAAA { … }` :
 **Où les mettre :**
 - Équipe : `images/organisation/prenom-nom.jpg`
 - Partenaires : `images/partenaires/nom.png`
-- Éditions passées : `images/editions/AAAA-01.jpg`, `AAAA-02.jpg`…
+- Éditions passées : `images/editions/AAAA-01.webp`, `AAAA-01-mini.webp`…
 - Affiches de la programmation : `images/activites-1.jpg`, `images/activites-2.jpg`
 
 **Tailles et formats conseillés :**
-- Photos : JPG, 1280 px de large au maximum, moins de 400 Ko. Pour réduire une image : https://squoosh.app (gratuit, dans le navigateur).
+- Photos : WebP (ou JPG), 1400 px de large au maximum, moins de 200 Ko. Pour réduire une image : https://squoosh.app (gratuit, dans le navigateur). Voir aussi la [section 7.6](#76-les-photos-et-les-partenaires).
 - Portraits : carrés, environ 600 × 600 px.
 - Logos : PNG à fond transparent.
 

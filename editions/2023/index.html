@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../assets/style.css">
   <link rel="stylesheet" href="../../assets/editions.css">
   <script src="../../assets/site.js" defer></script>
+  <script src="../../assets/carousel.js" defer></script>
 </head>
 <body class="edition ed-2023">
   <div data-site-header></div>
@@ -117,13 +118,28 @@
     <section class="ed-photos">
       <div class="wrap">
         <h2>En images</h2>
-        <div class="mosaic mosaic-6">
-          <img src="../../images/editions/2023-01.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1280" height="853">
-          <img src="../../images/editions/2023-02.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1280" height="853">
-          <img src="../../images/editions/2023-03.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1280" height="853">
-          <img src="../../images/editions/2023-04.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1280" height="853">
-          <img src="../../images/editions/2023-05.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1280" height="853">
-          <img src="../../images/editions/2023-06.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1280" height="853">
+        <div class="gallery-frame" data-carousel>
+          <svg class="gf-deco" viewBox="0 0 130 70" aria-hidden="true" focusable="false">
+            <path d="M40 30 L64 42 M88 30 L64 42" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+            <circle cx="122" cy="62" r="5" style="fill:var(--e-fill)"/><path d="M104 46 L122 62" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+            <path d="M14 22 l13-20 h26 l13 20 l-13 20 h-26z" transform="translate(-6 4) scale(0.72)" style="fill:var(--e-c1)" stroke="var(--e-bg)" stroke-width="5"/>
+            <path d="M14 22 l13-20 h26 l13 20 l-13 20 h-26z" transform="translate(34 22) scale(0.72)" style="fill:var(--e-c2)" stroke="var(--e-bg)" stroke-width="5"/>
+            <path d="M14 22 l13-20 h26 l13 20 l-13 20 h-26z" transform="translate(64 0) scale(0.72)" style="fill:var(--e-c3)" stroke="var(--e-bg)" stroke-width="5"/>
+          </svg>
+          <div class="gf-viewport">
+            <div class="gf-track" tabindex="0" role="region" aria-label="Photos de l’édition 2023, utilisez les flèches pour défiler">
+            <figure class="gf-slide"><img src="../../images/editions/2023-01.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" width="1400" height="933"></figure>
+            <figure class="gf-slide"><img src="../../images/editions/2023-02.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1400" height="933"></figure>
+            <figure class="gf-slide"><img src="../../images/editions/2023-03.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1400" height="933"></figure>
+            <figure class="gf-slide"><img src="../../images/editions/2023-04.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1400" height="933"></figure>
+            <figure class="gf-slide"><img src="../../images/editions/2023-05.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1400" height="933"></figure>
+            <figure class="gf-slide"><img src="../../images/editions/2023-06.jpg" alt="Photo de l’édition 2023" data-placeholder="Photo de l’édition 2023" loading="lazy" width="1400" height="933"></figure>
+            </div>
+            <button class="gf-btn gf-prev" type="button" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="gf-btn gf-next" type="button" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+          <div class="gf-bar"><p class="gf-caption" aria-live="polite"></p><span class="gf-count"></span></div>
+          <div class="gf-thumbs"></div>
         </div>
       </div>
     </section>
